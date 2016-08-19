@@ -6,7 +6,7 @@ RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt551-trusty/ubuntu trusty ma
 # install depdencies
 RUN apt-get update          &&  \
     DEBIAN_FRONTEND=noninteractive apt-get -y upgrade      &&  \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y          \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y -qq      \
         software-properties-common                             \
         git                     \
         make                    \
@@ -53,8 +53,11 @@ RUN apt-get update          &&  \
         ruby                    \
         libicu-dev              \
         libxslt-dev             \
-        zlib1g-dev
+        zlib1g-dev              \
+        qt55base
 
+
+RUN source /opt/qt55/bin/qt55-env.sh
 
 WORKDIR /root
 
