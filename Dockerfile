@@ -2,6 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Ali Diouri <alidiouri@gmail.com>
 
 RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt551-trusty/ubuntu trusty main' >> /etc/apt/sources.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E9977759 
 
 # install depdencies
 RUN apt-get update          &&  \
@@ -57,8 +58,6 @@ RUN apt-get update          &&  \
         qt55base
 
 
-RUN source /opt/qt55/bin/qt55-env.sh
-
 WORKDIR /root
 
-
+RUN echo 'source /opt/qt55/bin/qt55-env.sh' >> /root/.bashrc
