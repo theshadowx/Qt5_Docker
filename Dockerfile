@@ -61,4 +61,4 @@ RUN apt-get update          &&  \
 
 WORKDIR /root
 
-CMD /opt/qt55/bin/qt55-env.sh
+RUN more /opt/qt55/bin/qt55-env.sh >> .bashrc
