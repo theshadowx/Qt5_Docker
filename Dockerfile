@@ -55,7 +55,8 @@ RUN apt-get update          &&  \
         libicu-dev              \
         libxslt-dev             \
         zlib1g-dev              \
-        qt55base
+        qt55base                \
+        xvfb
 
 
 WORKDIR /root
