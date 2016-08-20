@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER Ali Diouri <alidiouri@gmail.com>
 
-RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt551-trusty/ubuntu trusty main' >> /etc/apt/sources.list
+RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt561-trusty/ubuntu trusty main' >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E9977759 
 
 # install depdencies
@@ -55,9 +55,9 @@ RUN apt-get update          &&  \
         libicu-dev              \
         libxslt-dev             \
         zlib1g-dev              \
-        qt55base
+        qt56base
 
 
 WORKDIR /root
 
-RUN echo 'source /opt/qt55/bin/qt55-env.sh' >> /root/.bashrc
+RUN echo 'source /opt/qt55/bin/qt56-env.sh' >> /root/.bashrc
