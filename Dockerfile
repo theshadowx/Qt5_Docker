@@ -1,64 +1,38 @@
 FROM ubuntu:14.04
 MAINTAINER Ali Diouri <alidiouri@gmail.com>
 
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt551-trusty/ubuntu trusty main' >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E9977759 
 
-# install depdencies
-RUN apt-get update          &&  \
-    DEBIAN_FRONTEND=noninteractive apt-get -y upgrade      &&  \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y -qq      \
-        software-properties-common                             \
-        git                     \
-        make                    \
-        build-essential         \
-        g++                     \
-        lib32gcc1               \
-        nano                    \
-        libc6-i386              \
-        python                  \
-        python2.7               \
-        unzip                   \
-        wget                    \
-        "^libxcb.*"             \
-        libx11-xcb-dev          \
-        libglu1-mesa-dev        \
-        libxrender-dev          \
-        libxi-dev               \
-        libssl-dev              \
-        libxcursor-dev          \
-        libxcomposite-dev       \
-        libxdamage-dev          \
-        libxrandr-dev           \
-        libfontconfig1-dev      \
-        libcap-dev              \
-        libbz2-dev              \
-        libgcrypt11-dev         \
-        libpci-dev              \
-        libnss3-dev             \
-        libxcursor-dev          \
-        libxcomposite-dev       \
-        libxdamage-dev          \
-        libxrandr-dev           \
-        libdrm-dev              \
-        libfontconfig1-dev      \
-        libxtst-dev             \
-        libasound2-dev          \
-        gperf                   \
-        libcups2-dev            \
-        libpulse-dev            \
-        libudev-dev             \
-        libssl-dev              \
-        flex                    \
-        bison                   \
-        ruby                    \
-        libicu-dev              \
-        libxslt-dev             \
-        zlib1g-dev              \
-        qt55base                \
-        xvfb
+RUN sed -i 's/ universe/ universe multiverse/' /etc/apt/sources.list
+RUN apt update &&                  \
+    apt upgrade -y &&              \
+    apt install -y                 \
+        git                        \
+        wget                       \
+        xvfb                       \
+        flex                       \
+        bison                      \
+        libxcursor-dev             \
+        libxcomposite-dev          \
+        software-properties-common \
+        build-essential            \
+        libssl-dev                 \
+        libxcb1-dev                \
+        libx11-dev                 \
+        libgl1-mesa-dev            \
+        libudev-dev                \
+        qt55-meta-full
+
+ENV QT_BASE_DIR=/opt/qt55
+ENV QTDIR=$QT_BASE_DIR
+ENV PATH=$QT_BASE_DIR/bin:$PATH
+ENV LD_LIBRARY_PATH=$QT_BASE_DIR/lib:$LD_LIBRARY_PATH
+ENV PKG_CONFIG_PATH=$QT_BASE_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
 
 
-WORKDIR /root
+WORKDIR /home/root/
 
-RUN more /opt/qt55/bin/qt55-env.sh >> .bashrc
+CMD ["/bin/bash"]
