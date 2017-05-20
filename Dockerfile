@@ -3,7 +3,7 @@ MAINTAINER Ali Diouri <alidiouri@gmail.com>
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt561-trusty/ubuntu trusty main' >> /etc/apt/sources.list
+RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt562-trusty/ubuntu trusty main' >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E9977759 
 
 # install depdencies
