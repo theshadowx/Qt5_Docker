@@ -10,11 +10,13 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E9977759
 RUN sed -i 's/ universe/ universe multiverse/' /etc/apt/sources.list
 RUN apt update &&                  \
     apt upgrade -y &&              \
+    apt dist-upgrade -y &&         \
     apt install -y                 \
         git                        \
         wget                       \
         xvfb                       \
         flex                       \
+        snapcraft                  \
         bison                      \
         libxcursor-dev             \
         libxcomposite-dev          \
@@ -25,7 +27,8 @@ RUN apt update &&                  \
         libx11-dev                 \
         libgl1-mesa-dev            \
         libudev-dev                \
-        qt58-meta-full
+        qt58-meta-full &&          \
+    apt clean
 
 ENV QT_BASE_DIR=/opt/qt58
 ENV QTDIR=$QT_BASE_DIR
