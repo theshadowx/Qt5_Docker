@@ -1,61 +1,28 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Ali Diouri <alidiouri@gmail.com>
 
-RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt551-trusty/ubuntu trusty main' >> /etc/apt/sources.list
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-# install depdencies
-RUN apt-get update          &&  \
-    DEBIAN_FRONTEND=noninteractive apt-get -y upgrade      &&  \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y          \
-        software-properties-common                             \
-        git                     \
-        make                    \
-        build-essential         \
-        g++                     \
-        lib32gcc1               \
-        nano                    \
-        libc6-i386              \
-        python                  \
-        python2.7               \
-        unzip                   \
-        wget                    \
-        "^libxcb.*"             \
-        libx11-xcb-dev          \
-        libglu1-mesa-dev        \
-        libxrender-dev          \
-        libxi-dev               \
-        libssl-dev              \
-        libxcursor-dev          \
-        libxcomposite-dev       \
-        libxdamage-dev          \
-        libxrandr-dev           \
-        libfontconfig1-dev      \
-        libcap-dev              \
-        libbz2-dev              \
-        libgcrypt11-dev         \
-        libpci-dev              \
-        libnss3-dev             \
-        libxcursor-dev          \
-        libxcomposite-dev       \
-        libxdamage-dev          \
-        libxrandr-dev           \
-        libdrm-dev              \
-        libfontconfig1-dev      \
-        libxtst-dev             \
-        libasound2-dev          \
-        gperf                   \
-        libcups2-dev            \
-        libpulse-dev            \
-        libudev-dev             \
-        libssl-dev              \
-        flex                    \
-        bison                   \
-        ruby                    \
-        libicu-dev              \
-        libxslt-dev             \
-        zlib1g-dev
+RUN sed -i 's/ universe/ universe multiverse/' /etc/apt/sources.list
+RUN apt update &&                  \
+    apt upgrade -y &&              \
+    apt install -y                 \
+        git                        \
+        wget                       \
+        xvfb                       \
+        flex                       \
+        bison                      \
+        libxcursor-dev             \
+        libxcomposite-dev          \
+        software-properties-common \
+        build-essential            \
+        libssl-dev                 \
+        libxcb1-dev                \
+        libx11-dev                 \
+        libgl1-mesa-dev            \
+        libudev-dev                \
+        qt5-default
 
+WORKDIR /home/root/
 
-WORKDIR /root
-
-
+CMD ["/bin/bash"]
