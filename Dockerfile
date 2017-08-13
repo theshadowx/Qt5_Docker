@@ -23,7 +23,8 @@ RUN apt update &&                  \
         libx11-dev                 \
         libgl1-mesa-dev            \
         libudev-dev                \
-        qt5-default &&             \
+        qt5-default                \
+        qtbase5-private-dev      &&\
     apt clean
 
 WORKDIR /home/root/
