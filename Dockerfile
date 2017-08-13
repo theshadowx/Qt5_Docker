@@ -12,6 +12,10 @@ RUN apt update &&                  \
         wget                       \
         xvfb                       \
         flex                       \
+        dh-make                    \
+        debhelper                  \
+        checkinstall               \
+        fuse                       \
         snapcraft                  \
         bison                      \
         libxcursor-dev             \
