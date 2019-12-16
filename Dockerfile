@@ -1,4 +1,4 @@
-FROM ubuntu:XX.XX
+FROM ubuntu:18.04
 MAINTAINER Ali Diouri <alidiouri@gmail.com>
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
