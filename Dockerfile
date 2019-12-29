@@ -3,9 +3,6 @@ MAINTAINER Ali Diouri <alidiouri@gmail.com>
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN echo 'deb http://ppa.launchpad.net/beineri/opt-qt571-trusty/ubuntu trusty main ' >> /etc/apt/sources.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E9977759 
-
 # install depdencies
 RUN sed -i 's/ universe/ universe multiverse/' /etc/apt/sources.list
 RUN apt update &&                  \
@@ -24,8 +21,11 @@ RUN apt update &&                  \
         libxcb1-dev                \
         libx11-dev                 \
         libgl1-mesa-dev            \
-        libudev-dev                \
-        qt57-meta-full
+        libudev-dev
+
+RUN add-apt-repository ppa:beineri/opt-qt571-trusty --yes &&\
+    apt update &&\
+    apt install -y qt57-meta-full
 
 ENV QT_BASE_DIR=/opt/qt57
 ENV QTDIR=$QT_BASE_DIR
