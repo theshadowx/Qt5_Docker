@@ -9,6 +9,7 @@ The master branch is a template for what a dockerfile should be like either by c
 
 | Branch | Docker Tag | Ubuntu | Qt |
 |--------|------------|--------|----|
+| [default_qt5_focal](https://github.com/theshadowx/Qt5_Docker/tree/default_qt5_focal) | default_qt5_focal, focal, 20.04, devel | 20.04 (Focal Fossa) | 5.12.5 |
 | [default_qt5_bionic](https://github.com/theshadowx/Qt5_Docker/tree/default_qt5_bionic) | default_qt5_bionic, bionic, 18.04, latest | 18.04 (Bionic Beaver) | 5.9.5 |
 | [default_qt5_xenial](https://github.com/theshadowx/Qt5_Docker/tree/default_qt5_xenial) | default_qt5_xenial, xenial, 16.04 | 16.04 (Xenial Xerus) | 5.5.1 |
 | [default_qt5_trusty](https://github.com/theshadowx/Qt5_Docker/tree/default_qt5_trusty) | default_qt5_trusty, trusty, 14.04 | 14.04 (Trusty Tahr) | 5.2.1 |
